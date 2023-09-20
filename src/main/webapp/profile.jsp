@@ -5,6 +5,6 @@
     <title>Profile</title>
 </head>
 <body>
-<h3>Welcome ${session}</h3>
+<h3>Welcome ${email}</h3>
 </body>
 </html>

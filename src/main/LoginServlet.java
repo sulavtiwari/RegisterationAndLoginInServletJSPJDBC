@@ -33,14 +33,21 @@ public class LoginServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 HttpSession session=req.getSession();
-                session.setAttribute("email","");
+                session.setAttribute("email",email);
               RequestDispatcher rd = req.getRequestDispatcher("profile.jsp");
               rd.forward(req,resp);
+            } else{
+                pw.print("Email or Password did not match");
+                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+                rd.include(req,resp);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             pw.print("Failed to login "+e.getMessage());
+            RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+            rd.include(req,resp);
+
 
         }
 
