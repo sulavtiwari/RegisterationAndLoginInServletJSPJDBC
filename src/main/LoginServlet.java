@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
+import java.sql.*;
 
 import static java.lang.Class.forName;
 
@@ -17,8 +17,18 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter pw =resp.getWriter();
-        class.forName(com.mysql.cj.jdbc.Driver);
-        Connection con = DriverManager.getConnection("jdbc:mysql:localhost//:3306/onlinereg","root","Mysql1234");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinereg","root","Mysql1234");
+            PreparedStatement ps = con.prepareStatement("select * from user where email=? && password=?");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
