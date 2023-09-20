@@ -19,6 +19,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter pw =resp.getWriter();
+        resp.setContentType("text/html");
 
         try {
 
@@ -37,6 +38,7 @@ public class LoginServlet extends HttpServlet {
               RequestDispatcher rd = req.getRequestDispatcher("profile.jsp");
               rd.forward(req,resp);
             } else{
+
                 pw.print("Email or Password did not match");
                 RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
                 rd.include(req,resp);
