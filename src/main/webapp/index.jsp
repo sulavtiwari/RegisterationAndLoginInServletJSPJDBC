@@ -10,5 +10,6 @@ Contact Number: <input type="text" name="phone"><br>
 Password: <input type="password"><br>
 <input type="submit">
 </form>
+<h4>Already Registered? <a href="register.jsp">Login</a></h4>
 </body>
 </html>
