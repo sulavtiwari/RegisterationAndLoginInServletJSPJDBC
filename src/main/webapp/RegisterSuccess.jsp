@@ -7,8 +7,13 @@
 <body>
 <h3>
 <%
- request.getParam
+ String name = request.getParameter("name");
+ String email = request.getParameter("email");
+
  %>
+ <%= "Dear "+name + ","+"Your email: "+email+" is registered successfully." %>
+
 </h3>
+<p><a href="index.jsp">Login now!</a></p>
 </body>
 </html>

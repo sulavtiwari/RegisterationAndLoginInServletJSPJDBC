@@ -27,12 +27,12 @@ public class Register extends HttpServlet {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinereg","root","@Mysql1234");
             PreparedStatement ps = con.prepareStatement("Insert into user values(?,?,?,?,?,?)");
-            ps.setString(1,"name");
-            ps.setString(2,"email");
-            ps.setString(3,"gender");
-            ps.setString(4,"age");
-            ps.setString(5,"telephone");
-            ps.setString(6,"password");
+            ps.setString(1,name);
+            ps.setString(2,email);
+            ps.setString(3,gender);
+            ps.setString(4,age);
+            ps.setString(5,telephone);
+            ps.setString(6,password);
 
             int count = ps.executeUpdate();
 
@@ -43,9 +43,13 @@ public class Register extends HttpServlet {
                 rd.include(req,resp);
             }else {
 
-            pr.print("Failed to register User");
+            pr.print("<h3 style='color:red'>Failed to register User</h3>");
     }}
         catch(Exception e){
             e.printStackTrace();
+            pr.print("<h3 style='color:red'>Failed to register. "+e.getMessage()+"</h3>");
+            resp.setContentType("text/html");
+            RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+            rd.include(req,resp);
         }
 }}
