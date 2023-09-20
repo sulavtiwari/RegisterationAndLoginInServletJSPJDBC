@@ -21,12 +21,19 @@ public class LoginServlet extends HttpServlet {
         PrintWriter pw =resp.getWriter();
 
         try {
+
+            String email= req.getParameter("email");
+            String password = req.getParameter("password");
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinereg","root","Mysql1234");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinereg","root","@Mysql1234");
             PreparedStatement ps = con.prepareStatement("select * from user where email=? && password=?");
+            ps.setString(1,"email");
+            ps.setString(2,"password");
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 HttpSession session=req.getSession();
+                session.setAttribute("email","");
               RequestDispatcher rd = req.getRequestDispatcher("profile.jsp");
               rd.forward(req,resp);
             }
