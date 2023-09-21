@@ -14,6 +14,6 @@
  <%= "Dear "+name + ","+"Your email: "+email+" is registered successfully." %>
 
 </h3>
-<p><a href="index.jsp">Login now!</a></p>
+<p><a href="login.jsp">Login now!</a></p>
 </body>
 </html>

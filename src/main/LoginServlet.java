@@ -28,9 +28,9 @@ public class LoginServlet extends HttpServlet {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinereg","root","@Mysql1234");
-            PreparedStatement ps = con.prepareStatement("select * from user where email=? && password=?");
-            ps.setString(1,"email");
-            ps.setString(2,"password");
+            PreparedStatement ps = con.prepareStatement("select * from user where email=? AND password=?");
+            ps.setString(1,email);
+            ps.setString(2,password);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 HttpSession session=req.getSession();
@@ -39,10 +39,11 @@ public class LoginServlet extends HttpServlet {
               rd.forward(req,resp);
             } else{
 
-                pw.print("Email or Password did not match");
-                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+                pw.print("<h3 style='color:red'>Email or Password did not match</h3>");
+                RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
                 rd.include(req,resp);
             }
+            con.close();
 
         } catch (Exception e) {
             e.printStackTrace();

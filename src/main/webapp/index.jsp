@@ -7,9 +7,9 @@ Email: <input type="text" name="email"><br>
 Gender: <input type="text" name="gender"><br>
 Age: <input type="text" name="age"><br>
 Contact Number: <input type="text" name="phone"><br>
-Password: <input type="password"><br>
+Password: <input type="password" name="password"><br>
 <input type="submit">
 </form>
-<h4>Already Registered? <a href="register.jsp">Login</a></h4>
+<h4>Already Registered? <a href="login.jsp">Login</a></h4>
 </body>
 </html>
